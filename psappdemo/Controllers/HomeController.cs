@@ -4,15 +4,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using psappdemo.Models;
+
+
 
 namespace psappdemo.Controllers
 {
     public class HomeController : Controller
     {
+        private IConfiguration _configuration;
+        public HomeController(IConfiguration configuration)
+        {
+             _configuration = configuration;
+        }
+       
         public IActionResult Index()
         {
-            return View();
+            var msg = _configuration["Greeting"];
+            return View("Index", msg);
         }
 
         public IActionResult About()
