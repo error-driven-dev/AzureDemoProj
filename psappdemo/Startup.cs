@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using psappdemo.Data;
 using psappdemo.Models;
 using psappdemo.Services;
+using Microsoft.Azure.Documents;
 
 namespace psappdemo
 {
@@ -26,6 +27,7 @@ namespace psappdemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<CourseStore>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
