@@ -1,23 +1,22 @@
 ﻿@model IEnumerable<Course>
 
-<h2>this is a list of the courses</h2>
+
 @foreach(var course in Model)
 {
-    <h2>@course.Name</h2>
+    <h2>Course: @course.Name</h2>
     foreach(var mod in course.Modules)
     {
-        <h2>@mod.Name</h2>
+        <h4>Module: @mod.Name</h4>
         foreach(var clip in mod.Clips)
         {
-            <h2>@clip.Name</h2>
-            <h2>@clip.Length</h2>
-
+            <h6>Clip: @clip.Name Length: @clip.Length</h6>
+            
         }
 
     }
 
 }
 
-<form asp-action="Index" method="post">
-    <input type="submit" name="Submit" value="Submit"/>
+<form asp-action="Insert" method="post">
+    <input type="submit" name="Submit" value="Seed Data"/>
 </form>

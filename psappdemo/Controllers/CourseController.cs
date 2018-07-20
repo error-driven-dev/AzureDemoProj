@@ -24,21 +24,11 @@ namespace psappdemo.Controllers
             return View(courses);
         }
 
-        public async Task<IActionResult> Insert(Course course)
+        public async Task<IActionResult> Insert()
         {
-            var clips = new List<Clip>();
-            var newClip = new Clip { Name = "Clip 1", Length = 20 };
-            clips.Add(newClip);
-            var modules = new List<Module>();
-            var newMod = new Module { Name = "My first Module", Clips = clips };
-            modules.Add(newMod);
-
-            var newCourse = new Course()
-            {
-                Name = "Welcome!",
-                Modules = modules
-            };
-            await _store.InsertCourses(newCourse);
+            var data = new SeedData().CourseList();
+            
+            await _store.InsertCourses(data);
             return RedirectToAction("Index");
         }
     }

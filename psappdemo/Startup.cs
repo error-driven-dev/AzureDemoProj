@@ -28,7 +28,7 @@ namespace psappdemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ImageStore>();
-            services.AddTransient<CourseStore>();
+            services.AddSingleton<CourseStore>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

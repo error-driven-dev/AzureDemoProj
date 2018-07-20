@@ -21,9 +21,9 @@ namespace psappdemo.Services
             _courseLink = UriFactory.CreateDocumentCollectionUri("psappdemo", "Courses");
          }
 
-        public async Task InsertCourses(Course course)
+        public async Task InsertCourses(IEnumerable<Course> courses)
         {
-            
+            foreach(var course in courses)
                 await _client.CreateDocumentAsync(_courseLink, course);
             
         }
